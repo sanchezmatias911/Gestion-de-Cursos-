@@ -4,7 +4,7 @@ import gestionCursos.Curso.Curso;
 import gestionCursos.Estilo;
 import gestionCursos.Estudiantes.Estudiante;
 
-public class DocenteDedicado implements DocenteTemplate{
+public class DocenteDedicado implements Docente{
 
     Estilo estiloDocente;
     

@@ -6,9 +6,9 @@ import gestionCursos.Estilo;
 
 import java.util.Set;
 
-public class Estudiante {
+public class EstudianteNatacion implements Estudiante{
 
-    Set<Estilo> estiloQueDomina;
+    Set<Estilo> estilosQueDomina;
 
     int edad;
 
@@ -20,14 +20,29 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public Set<Estilo> getEstiloQueDomina() {
-        return estiloQueDomina;
-    }
-
-    private boolean sePuedeInscribir(Curso curso){
-        
+    public Set<Estilo> getEstilosQueDomina() {
+        return estilosQueDomina;
     }
 
 
+    @Override
+    public boolean domina(Estilo estilo) {
+        return estilosQueDomina.contains(estilo);
+    }
 
+    @Override
+    public boolean esMenor() {
+        return edad<13;
+    }
+
+    @Override
+    public boolean sepuedeInscribir(Curso curso) {
+        return curso.sePuedeInscribir(this);
+
+    }
+
+    @Override
+    public void inscribir(Curso curso) {
+
+    }
 }

@@ -1,2 +1,6 @@
-package gestionCursos;public class Estilo {
+package gestionCursos;
+
+public class Estilo {
+
+
 }
