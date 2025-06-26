@@ -3,6 +3,7 @@ package gestionCursos.Curso;
 import gestionCursos.Docente.Docente;
 import gestionCursos.Estudiantes.Estudiante;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
@@ -24,13 +25,20 @@ public class CursoBase implements Curso{
     }
 
     public boolean seCumplenRequisitosAdicionales(Estudiante estudiante){
-        return true; // IMPLEMENTAR
+
+        return estudiante.dominaAlgunEstilo() || docenteAsignado.esProfesionalGuardavida(); // IMPLEMENTAR
     }
 
     @Override
     public int cantMenores() {
        return  this.menoresInscriptos().size();
     }
+
+    @Override
+    public Set<Estudiante> alumnosInscriptos() {
+        return new HashSet<>(inscriptos);
+    }
+
 
 
     public Set<Estudiante> menoresInscriptos() {
@@ -51,7 +59,33 @@ public class CursoBase implements Curso{
 
 
     @Override
-    public void inscribir(Estudiante estudiante) {
+    public void inscribir(Estudiante estudiante) throws Exception {
+        this.validarInscripcion(estudiante);
+        inscriptos.add(estudiante);
+    }
+
+    private void validarInscripcion(Estudiante estudiante) throws Exception {
+        if(!this.sePuedeInscribir(estudiante)){
+            throw new InscripcionInvalidaException("El estudiante no puede inscribirse");
+        }
 
     }
+
+    @Override
+    public BigDecimal recaudacion() {
+        return this.recaudacionBruta() - this.docenteAsignado.loQueCobraPor(this); // SEGUIR AQUI
+    }
+
+    BigDecimal recaudacionBruta(){
+        return this.baseCurso() + this.descuentosEstudiantes()
+    }
+    // IMPLEMENTAR
+
+    public double descuentosEstudiantes(){
+        return inscriptos.stream().mapToDouble(Estudiante::descuentosEstilos).sum();
+    }
+
+    public int baseCurso() {return 20;}
+
 }
+

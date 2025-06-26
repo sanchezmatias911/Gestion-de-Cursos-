@@ -12,4 +12,7 @@ public interface Estudiante {
     boolean esMenor();
     boolean sepuedeInscribir(Curso curso);
     void inscribir(Curso curso);
+    boolean dominaAlgunEstilo();
+    boolean dominaAlgunEstiloRelajante();
+    double descuentosEstilos();
 }

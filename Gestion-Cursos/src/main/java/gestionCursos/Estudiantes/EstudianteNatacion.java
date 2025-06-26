@@ -4,6 +4,7 @@ package gestionCursos.Estudiantes;
 import gestionCursos.Curso.Curso;
 import gestionCursos.Estilo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class EstudianteNatacion implements Estudiante{
@@ -16,23 +17,21 @@ public class EstudianteNatacion implements Estudiante{
         return edad;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
+
 
     public Set<Estilo> getEstilosQueDomina() {
-        return estilosQueDomina;
+        return new HashSet<>(estilosQueDomina);
     }
 
 
     @Override
     public boolean domina(Estilo estilo) {
-        return estilosQueDomina.contains(estilo);
+        return this.getEstilosQueDomina().contains(estilo);
     }
 
     @Override
     public boolean esMenor() {
-        return edad<13;
+        return this.getEdad()<13;
     }
 
     @Override
@@ -44,5 +43,15 @@ public class EstudianteNatacion implements Estudiante{
     @Override
     public void inscribir(Curso curso) {
 
+    }
+
+    @Override
+    public boolean dominaAlgunEstilo() {
+        return !estilosQueDomina.isEmpty();
+    }
+
+    @Override
+    public boolean dominaAlgunEstiloRelajante() {
+        return estilosQueDomina.stream().anyMatch(Estilo::esRelajante);
     }
 }
