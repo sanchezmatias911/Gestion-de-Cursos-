@@ -6,7 +6,6 @@ import gestionCursos.Estudiantes.Estudiante;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -73,19 +72,22 @@ public class CursoBase implements Curso{
 
     @Override
     public BigDecimal recaudacion() {
-        return this.recaudacionBruta() - this.docenteAsignado.loQueCobraPor(this); // SEGUIR AQUI
+         BigDecimal recaudacionBruta = this.recaudacionBruta();
+         BigDecimal loQueCobraDocente = this.docenteAsignado.loQueCobraPor(this);
+        return  recaudacionBruta.subtract(loQueCobraDocente);
     }
 
     BigDecimal recaudacionBruta(){
-        return this.baseCurso() + this.descuentosEstudiantes()
+        return this.baseCurso().add(this.sumDescuentosEstudiantes()); // recaudacion base + descuentos estudiantes
     }
     // IMPLEMENTAR
 
-    public double descuentosEstudiantes(){
-        return inscriptos.stream().mapToDouble(Estudiante::descuentosEstilos).sum();
+    public BigDecimal sumDescuentosEstudiantes(){
+        return this.descuentosEstiloEstudiantes().reduce(BigDecimal.ZERO,BigDecimal::add);
     }
+    public Stream<BigDecimal> descuentosEstiloEstudiantes(){return  this.alumnosInscriptos().stream().map(Estudiante::descuentosEstilos);}
 
-    public int baseCurso() {return 20;}
+    public BigDecimal baseCurso() {return BigDecimal.valueOf(20);}
 
 }
 

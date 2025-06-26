@@ -4,6 +4,7 @@ package gestionCursos.Estudiantes;
 import gestionCursos.Curso.Curso;
 import gestionCursos.Estilo;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -53,5 +54,10 @@ public class EstudianteNatacion implements Estudiante{
     @Override
     public boolean dominaAlgunEstiloRelajante() {
         return estilosQueDomina.stream().anyMatch(Estilo::esRelajante);
+    }
+
+    @Override
+    public BigDecimal descuentosEstilos() {
+        return BigDecimal.valueOf(estilosQueDomina.stream().mapToDouble(Estilo::getDescuento).sum());
     }
 }

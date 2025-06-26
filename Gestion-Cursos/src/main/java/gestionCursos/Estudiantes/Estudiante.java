@@ -3,6 +3,7 @@ package gestionCursos.Estudiantes;
 import gestionCursos.Curso.Curso;
 import gestionCursos.Estilo;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 public interface Estudiante {
@@ -14,5 +15,7 @@ public interface Estudiante {
     void inscribir(Curso curso);
     boolean dominaAlgunEstilo();
     boolean dominaAlgunEstiloRelajante();
-    double descuentosEstilos();
+    BigDecimal descuentosEstilos();
+
+
 }

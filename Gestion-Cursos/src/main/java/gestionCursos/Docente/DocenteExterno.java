@@ -11,14 +11,9 @@ public class DocenteExterno extends DocenteBasico {
         return this.hayVacanteMenores(estudiante,curso) || (!estudiante.esMenor());
     }
 
-    @Override
-    public boolean esProfesionalGuardavida() {
-        return false;
-    }
-
     public boolean hayVacanteMenores(Estudiante estudiante, Curso curso){
         return estudiante.esMenor() && this.tengoEspacio(curso);
     }
 
-    public boolean tengoEspacio(Curso curso){return curso.cantMenores()< limiteMenores;}
+    public boolean tengoEspacioEn(Curso curso){return curso.cantMenores()< limiteMenores;}
 }
