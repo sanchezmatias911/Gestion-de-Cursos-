@@ -12,7 +12,7 @@ public class DocenteExterno extends DocenteBasico {
     }
 
     public boolean hayVacanteMenores(Estudiante estudiante, Curso curso){
-        return estudiante.esMenor() && this.tengoEspacio(curso);
+        return estudiante.esMenor() && this.tengoEspacioEn(curso);
     }
 
     public boolean tengoEspacioEn(Curso curso){return curso.cantMenores()< limiteMenores;}
