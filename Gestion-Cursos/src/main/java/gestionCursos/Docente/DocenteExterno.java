@@ -21,7 +21,7 @@ public class DocenteExterno extends DocenteBasico {
 
     @Override
     public BigDecimal loQueCobraPor(Curso curso) {
-        return super.loQueCobraPor(curso).add(this.extraPorInscriptos(curso))
+        return super.loQueCobraPor(curso).add(this.extraPorInscriptos(curso));
     }
 
     public BigDecimal extraPorInscriptos(Curso curso){

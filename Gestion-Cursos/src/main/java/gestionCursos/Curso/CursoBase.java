@@ -77,7 +77,7 @@ public class CursoBase implements Curso{
         return  recaudacionBruta.subtract(loQueCobraDocente);
     }
 
-    BigDecimal recaudacionBruta(){
+    public BigDecimal recaudacionBruta(){
         return this.baseCurso().add(this.sumDescuentosEstudiantes()); // recaudacion base + descuentos estudiantes
     }
 
