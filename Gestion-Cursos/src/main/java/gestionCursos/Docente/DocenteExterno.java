@@ -3,6 +3,8 @@ package gestionCursos.Docente;
 import gestionCursos.Curso.Curso;
 import gestionCursos.Estudiantes.Estudiante;
 
+import java.math.BigDecimal;
+
 public class DocenteExterno extends DocenteBasico {
 
     int limiteMenores;
@@ -16,4 +18,16 @@ public class DocenteExterno extends DocenteBasico {
     }
 
     public boolean tengoEspacioEn(Curso curso){return curso.cantMenores()< limiteMenores;}
+
+    @Override
+    public BigDecimal loQueCobraPor(Curso curso) {
+        return super.loQueCobraPor(curso).add(this.extraPorInscriptos(curso))
+    }
+
+    public BigDecimal extraPorInscriptos(Curso curso){
+       return BigDecimal.valueOf(3L *curso.cantInscriptos());
+
+    }
+
+
 }

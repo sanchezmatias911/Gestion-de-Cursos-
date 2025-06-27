@@ -19,6 +19,21 @@ public class EscuelaNatacion implements Escuela{
 
     }
 
+    @Override
+    public Set<Curso> cursosConEstilo() {
+        return null;
+    }
+
+    @Override
+    public Set<Curso> cursosInfantiles() {
+        return null;
+    }
+
+    @Override
+    public Set<Curso> docentesInfantiles() {
+        return null;
+    }
+
     public Set<Curso> getCursos() {
         return new HashSet<>(cursos);
     }

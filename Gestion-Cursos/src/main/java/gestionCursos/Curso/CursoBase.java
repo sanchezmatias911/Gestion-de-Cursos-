@@ -80,6 +80,11 @@ public class CursoBase implements Curso{
     BigDecimal recaudacionBruta(){
         return this.baseCurso().add(this.sumDescuentosEstudiantes()); // recaudacion base + descuentos estudiantes
     }
+
+    @Override
+    public int cantInscriptos() {
+        return inscriptos.size();
+    }
     // IMPLEMENTAR
 
     public BigDecimal sumDescuentosEstudiantes(){

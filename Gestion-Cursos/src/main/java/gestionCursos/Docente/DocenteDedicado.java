@@ -15,6 +15,9 @@ public class DocenteDedicado extends DocenteBasico{
         return estudiante.domina(estiloDocente);
     }
 
+    @Override
+    public BigDecimal porcentaje(){return BigDecimal.valueOf(0.15);}
+
 
 
 }

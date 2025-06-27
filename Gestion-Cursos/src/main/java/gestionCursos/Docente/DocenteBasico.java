@@ -20,6 +20,13 @@ public class DocenteBasico implements Docente {
 
     @Override
     public BigDecimal loQueCobraPor(Curso curso) {
-        return BigDecimal.valueOf(20); // IMPLEMENTAR
+        BigDecimal base = this.cobroBase();
+        BigDecimal extraCurso = curso.recaudacionBruta().multiply(this.porcentaje());
+
+        return base.add(extraCurso);
     }
+
+    public BigDecimal cobroBase() { return BigDecimal.valueOf(20);}
+
+    public BigDecimal porcentaje(){return BigDecimal.valueOf(0.1);}
 }

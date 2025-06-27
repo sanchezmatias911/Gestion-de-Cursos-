@@ -13,4 +13,7 @@ public interface Curso {
     int cantMenores();
     Set<Estudiante> alumnosInscriptos();
     BigDecimal recaudacion();
+
+    BigDecimal recaudacionBruta();
+    int cantInscriptos();
 }

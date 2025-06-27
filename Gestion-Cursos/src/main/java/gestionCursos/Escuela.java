@@ -1,12 +1,24 @@
 package gestionCursos;
 
+import gestionCursos.Curso.Curso;
+
 import java.math.BigDecimal;
+import java.util.Set;
 
 public interface Escuela {
 
-    public BigDecimal getIngresoMensual();
+     BigDecimal getIngresoMensual();
 
-    public void recaudarIngresoMensual();
+     void recaudarIngresoMensual();
+
+     Set<Curso> cursosConEstilo();
+
+    Set<Curso> cursosInfantiles();
+
+    Set<Curso> docentesInfantiles();
+
+
+
 }
 
 
