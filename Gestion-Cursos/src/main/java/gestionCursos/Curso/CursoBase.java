@@ -1,6 +1,7 @@
 package gestionCursos.Curso;
 
 import gestionCursos.Docente.Docente;
+import gestionCursos.Estilo;
 import gestionCursos.Estudiantes.Estudiante;
 
 import java.math.BigDecimal;
@@ -11,8 +12,19 @@ import java.util.stream.Stream;
 
 public class CursoBase implements Curso{
     Set<Estudiante> inscriptos = new HashSet<>();
+
     Docente docenteAsignado;
+
+    public Docente getDocenteAsignado() {
+        return docenteAsignado;
+    }
+
    int cupoMaximo;
+
+    public CursoBase(Docente docenteAsignado, int cupoMaximo) {
+        this.docenteAsignado = docenteAsignado;
+        this.cupoMaximo = cupoMaximo;
+    }
 
     @Override
     public boolean sePuedeInscribir(Estudiante estudiante) {
@@ -84,6 +96,16 @@ public class CursoBase implements Curso{
     @Override
     public int cantInscriptos() {
         return inscriptos.size();
+    }
+
+    @Override
+    public boolean alguienDomina(Estilo estilo) {
+        return inscriptos.stream().anyMatch(estudiante -> estudiante.domina(estilo));
+    }
+
+    @Override
+    public boolean todosMisInscriptosSonMenores() {
+        return inscriptos.stream().anyMatch(Estudiante::esMenor);
     }
     // IMPLEMENTAR
 

@@ -1,5 +1,7 @@
 package gestionCursos.Curso;
 
+import gestionCursos.Docente.Docente;
+import gestionCursos.Estilo;
 import gestionCursos.Estudiantes.Estudiante;
 
 import java.math.BigDecimal;
@@ -16,4 +18,8 @@ public interface Curso {
 
     BigDecimal recaudacionBruta();
     int cantInscriptos();
+    boolean alguienDomina(Estilo estilo);
+    boolean todosMisInscriptosSonMenores();
+
+    Docente getDocenteAsignado();
 }

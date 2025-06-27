@@ -8,6 +8,12 @@ import java.math.BigDecimal;
 public class DocenteExterno extends DocenteBasico {
 
     int limiteMenores;
+
+    public DocenteExterno(boolean esGuardavida, int limiteMenores) {
+        super(esGuardavida);
+        this.limiteMenores = limiteMenores;
+    }
+
     @Override
     public boolean estaHabilitadoParaDictarClasesA(Estudiante estudiante, Curso curso) {
         return this.hayVacanteMenores(estudiante,curso) || (!estudiante.esMenor());

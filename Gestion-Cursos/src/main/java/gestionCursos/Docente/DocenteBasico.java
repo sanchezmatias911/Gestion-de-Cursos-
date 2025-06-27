@@ -8,6 +8,11 @@ import java.math.BigDecimal;
 public class DocenteBasico implements Docente {
 
     boolean esGuardavida;
+
+    public DocenteBasico(boolean esGuardavida) {
+        this.esGuardavida = esGuardavida;
+    }
+
     @Override
     public boolean estaHabilitadoParaDictarClasesA(Estudiante estudiante, Curso curso) {
         return true;

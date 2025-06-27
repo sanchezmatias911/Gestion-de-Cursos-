@@ -14,6 +14,11 @@ public class EstudianteNatacion implements Estudiante{
 
     int edad;
 
+    public EstudianteNatacion(Set<Estilo> estilosQueDomina, int edad) {
+        this.estilosQueDomina = estilosQueDomina;
+        this.edad = edad;
+    }
+
     public int getEdad() {
         return edad;
     }
