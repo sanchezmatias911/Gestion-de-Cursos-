@@ -9,7 +9,12 @@ import java.math.BigDecimal;
 public class DocenteDedicado extends DocenteBasico{
 
     Estilo estiloDocente;
-    
+
+    public DocenteDedicado(boolean esGuardavida, Estilo estiloDocente) {
+        super(esGuardavida);
+        this.estiloDocente = estiloDocente;
+    }
+
     @Override
     public boolean estaHabilitadoParaDictarClasesA(Estudiante estudiante, Curso curso) {
         return estudiante.domina(estiloDocente);

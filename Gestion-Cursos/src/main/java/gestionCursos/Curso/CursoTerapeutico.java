@@ -9,8 +9,9 @@ public class CursoTerapeutico extends CursoBase{
 
     BigDecimal recaudacionBruta;
 
-    public CursoTerapeutico(Docente docenteAsignado, int cupoMaximo) {
+    public CursoTerapeutico(Docente docenteAsignado, int cupoMaximo,BigDecimal recaudacionBruta) {
         super(docenteAsignado, cupoMaximo);
+        this.recaudacionBruta = recaudacionBruta;
     }
 
     @Override
